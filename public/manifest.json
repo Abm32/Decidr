@@ -1,0 +1,9 @@
+{
+  "name": "Decidr",
+  "short_name": "Decidr",
+  "description": "Decision Intelligence Engine",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#030712",
+  "theme_color": "#7C3AED"
+}

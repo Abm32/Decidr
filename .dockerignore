@@ -1,0 +1,8 @@
+node_modules
+.next
+dist
+.git
+.env
+demo-video/node_modules
+demo-video/out
+*.tsbuildinfo
