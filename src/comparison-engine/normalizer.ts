@@ -1,4 +1,4 @@
-import type { NormalizerConfig, RawMetrics, NormalizedMetrics } from "./models.js";
+import type { NormalizerConfig, RawMetrics, NormalizedMetrics } from "./models";
 
 export function normalize(rawValue: number, config: NormalizerConfig): number {
   if (config.min === config.max) return 50;

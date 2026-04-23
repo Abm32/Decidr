@@ -1,5 +1,5 @@
-import { PersonaSchema } from "./models.js";
-import type { PersonaValidationResult, ValidationError } from "./models.js";
+import { PersonaSchema } from "./models";
+import type { PersonaValidationResult, ValidationError } from "./models";
 
 export function validatePersona(persona: unknown): PersonaValidationResult {
   const result = PersonaSchema.safeParse(persona);

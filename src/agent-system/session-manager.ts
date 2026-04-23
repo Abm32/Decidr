@@ -8,7 +8,7 @@ import type {
   SessionCloseResult,
   ReconnectionResult,
   AddMessageResult,
-} from "./models.js";
+} from "./models";
 
 export interface SessionManagerConfig {
   timeoutMs: number;

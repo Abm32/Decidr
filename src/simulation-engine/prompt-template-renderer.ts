@@ -1,4 +1,4 @@
-import type { PromptTemplate, TemplateVariables } from "./models.js";
+import type { PromptTemplate, TemplateVariables } from "./models";
 
 export const DEFAULT_TEMPLATE: PromptTemplate = {
   templateId: "default-v1",

@@ -1,4 +1,4 @@
-import type { VoiceStyle, TTSResult, SFXResult, MusicResult } from "./models.js";
+import type { VoiceStyle, TTSResult, SFXResult, MusicResult } from "./models";
 
 export interface TTSClient {
   synthesize(text: string, voiceStyle: VoiceStyle): Promise<TTSResult>;

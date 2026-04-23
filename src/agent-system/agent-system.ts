@@ -1,6 +1,6 @@
-import { createAgent } from "./agent-factory.js";
-import { SessionManager } from "./session-manager.js";
-import type { VoiceClient } from "./voice-client.js";
+import { createAgent } from "./agent-factory";
+import { SessionManager } from "./session-manager";
+import type { VoiceClient } from "./voice-client";
 import type {
   Agent,
   Persona,
@@ -11,7 +11,7 @@ import type {
   SessionCloseResult,
   ReconnectionResult,
   VoiceResponseResult,
-} from "./models.js";
+} from "./models";
 
 export interface AgentSystemConfig {
   sessionTimeoutMs: number;

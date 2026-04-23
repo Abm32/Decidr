@@ -1,10 +1,10 @@
-import type { LLMClient } from "./llm-client.js";
-import type { SimulationResult, SimulationEngineConfig, Scenario } from "./models.js";
-import { validateInput } from "./input-validator.js";
-import { renderTemplate, DEFAULT_TEMPLATE } from "./prompt-template-renderer.js";
-import { parseResponse } from "./response-parser.js";
-import { validateSchema } from "./schema-validator.js";
-import { selectPathTypes, verifyDiversity } from "./variation-engine.js";
+import type { LLMClient } from "./llm-client";
+import type { SimulationResult, SimulationEngineConfig, Scenario } from "./models";
+import { validateInput } from "./input-validator";
+import { renderTemplate, DEFAULT_TEMPLATE } from "./prompt-template-renderer";
+import { parseResponse } from "./response-parser";
+import { validateSchema } from "./schema-validator";
+import { selectPathTypes, verifyDiversity } from "./variation-engine";
 
 const DEFAULT_CONFIG: SimulationEngineConfig = { scenarioCount: 3, maxRetries: 2 };
 

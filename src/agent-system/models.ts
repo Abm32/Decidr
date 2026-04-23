@@ -5,8 +5,8 @@ export {
   TimelineEntrySchema,
   EmotionalToneSchema,
   PathTypeSchema,
-} from "../simulation-engine/models.js";
-import type { Scenario, TimelineEntry, EmotionalTone, PathType } from "../simulation-engine/models.js";
+} from "../simulation-engine/models";
+import type { Scenario, TimelineEntry, EmotionalTone, PathType } from "../simulation-engine/models";
 export type { Scenario, TimelineEntry, EmotionalTone, PathType };
 
 export const PersonaSchema = z.object({

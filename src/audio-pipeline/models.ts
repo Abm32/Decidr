@@ -4,7 +4,7 @@ import {
   TimelineEntrySchema,
   PathTypeSchema,
   ScenarioSchema,
-} from "../simulation-engine/models.js";
+} from "../simulation-engine/models";
 
 export {
   EmotionalToneSchema,
@@ -17,7 +17,7 @@ export type {
   TimelineEntry,
   PathType,
   Scenario,
-} from "../simulation-engine/models.js";
+} from "../simulation-engine/models";
 
 export const ScriptSegmentSchema = z.object({
   index: z.number().int().min(0),

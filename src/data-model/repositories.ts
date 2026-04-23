@@ -1,4 +1,4 @@
-import type { Prompt, Scenario, AudioAsset, Conversation } from "./schemas.js";
+import type { Prompt, Scenario, AudioAsset, Conversation } from "./schemas";
 
 export interface Repository<T> {
   create(entity: T): Promise<T>;

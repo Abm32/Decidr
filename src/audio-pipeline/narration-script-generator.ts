@@ -1,4 +1,4 @@
-import type { Scenario, NarrationScript, ScriptSegment } from "./models.js";
+import type { Scenario, NarrationScript, ScriptSegment } from "./models";
 
 export function generateNarrationScript(scenario: Scenario): NarrationScript {
   const { scenario_id, title, path_type, timeline, summary } = scenario;

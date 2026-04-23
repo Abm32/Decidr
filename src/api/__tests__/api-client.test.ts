@@ -1,5 +1,5 @@
 import { describe, it, expect, vi, beforeEach } from "vitest";
-import { createApiClient } from "../api-client.js";
+import { createApiClient } from "../api-client";
 
 const mockFetch = vi.fn();
 vi.stubGlobal("fetch", mockFetch);

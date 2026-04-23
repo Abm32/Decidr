@@ -1,4 +1,4 @@
-import type { ValidationResult } from "./models.js";
+import type { ValidationResult } from "./models";
 
 export function validateInput(prompt: string): ValidationResult {
   const trimmed = prompt.trim();

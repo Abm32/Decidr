@@ -15,7 +15,7 @@ export {
   AudioExperienceSchema,
   AudioStreamSchema,
   AudioPipelineConfigSchema,
-} from "./models.js";
+} from "./models";
 
 export type {
   EmotionalTone,
@@ -37,23 +37,23 @@ export type {
   SFXResult,
   MusicResult,
   AudioPipelineResult,
-} from "./models.js";
+} from "./models";
 
 // Narration script generator
-export { generateNarrationScript } from "./narration-script-generator.js";
+export { generateNarrationScript } from "./narration-script-generator";
 
 // Emotion-audio mapper
-export { mapEmotion, getAllMappings } from "./emotion-audio-mapper.js";
+export { mapEmotion, getAllMappings } from "./emotion-audio-mapper";
 
 // Client interfaces
-export type { TTSClient, SFXClient, MusicProvider } from "./clients.js";
+export type { TTSClient, SFXClient, MusicProvider } from "./clients";
 
 // Audio merger
-export { mergeSegment, stitchSegments } from "./audio-merger.js";
-export type { AudioLayers } from "./audio-merger.js";
+export { mergeSegment, stitchSegments } from "./audio-merger";
+export type { AudioLayers } from "./audio-merger";
 
 // Stream handler
-export { createStream, pushSegment, endStream, errorStream } from "./stream-handler.js";
+export { createStream, pushSegment, endStream, errorStream } from "./stream-handler";
 
 // Pipeline orchestrator
-export { AudioPipeline } from "./audio-pipeline.js";
+export { AudioPipeline } from "./audio-pipeline";

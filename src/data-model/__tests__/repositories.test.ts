@@ -1,12 +1,12 @@
 import { describe, it, expect } from "vitest";
 import { randomUUID } from "node:crypto";
 import fc from "fast-check";
-import { InMemoryPromptRepo } from "../in-memory/prompt-repo.js";
-import { InMemoryScenarioRepo } from "../in-memory/scenario-repo.js";
-import { InMemoryAudioAssetRepo } from "../in-memory/audio-asset-repo.js";
-import { InMemoryConversationRepo } from "../in-memory/conversation-repo.js";
-import { EntityNotFoundError } from "../errors.js";
-import type { Prompt, Scenario, AudioAsset, Conversation } from "../schemas.js";
+import { InMemoryPromptRepo } from "../in-memory/prompt-repo";
+import { InMemoryScenarioRepo } from "../in-memory/scenario-repo";
+import { InMemoryAudioAssetRepo } from "../in-memory/audio-asset-repo";
+import { InMemoryConversationRepo } from "../in-memory/conversation-repo";
+import { EntityNotFoundError } from "../errors";
+import type { Prompt, Scenario, AudioAsset, Conversation } from "../schemas";
 
 const uuid = () => fc.uuid().filter((u) => /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(u));
 const isoDate = () => fc.integer({ min: 0, max: 4102444800000 }).map((ms) => new Date(ms).toISOString());

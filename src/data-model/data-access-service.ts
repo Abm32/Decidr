@@ -3,10 +3,10 @@ import type {
   ScenarioRepository,
   AudioAssetRepository,
   ConversationRepository,
-} from "./repositories.js";
-import type { Prompt, Scenario, AudioAsset, Conversation } from "./schemas.js";
-import type { AudioAssetCache } from "./audio-cache.js";
-import { ReferentialIntegrityError } from "./errors.js";
+} from "./repositories";
+import type { Prompt, Scenario, AudioAsset, Conversation } from "./schemas";
+import type { AudioAssetCache } from "./audio-cache";
+import { ReferentialIntegrityError } from "./errors";
 
 export class DataAccessService {
   constructor(

@@ -3,9 +3,9 @@ import {
   ScenarioSchema,
   AudioAssetSchema,
   ConversationSchema,
-} from "./schemas.js";
-import type { Prompt, Scenario, AudioAsset, Conversation } from "./schemas.js";
-import { DeserializationError } from "./errors.js";
+} from "./schemas";
+import type { Prompt, Scenario, AudioAsset, Conversation } from "./schemas";
+import { DeserializationError } from "./errors";
 import { ZodError, type ZodSchema } from "zod";
 
 function deserialize<T>(json: string, schema: ZodSchema<T>, entityType: string): T {

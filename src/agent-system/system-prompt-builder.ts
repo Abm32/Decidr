@@ -1,4 +1,4 @@
-import type { Persona, Scenario } from "./models.js";
+import type { Persona, Scenario } from "./models";
 
 export function buildSystemPrompt(persona: Persona, scenario: Scenario): string {
   const timelineLines = scenario.timeline

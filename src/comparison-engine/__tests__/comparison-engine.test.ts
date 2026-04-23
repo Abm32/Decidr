@@ -1,14 +1,14 @@
 import { describe, it, expect } from "vitest";
 import fc from "fast-check";
-import { validateInput } from "../input-validator.js";
-import { extractMetrics } from "../metric-extractor.js";
-import { normalize, getLabel, normalizeBatch } from "../normalizer.js";
-import { generateChartData } from "../chart-generator.js";
-import { generateTemplateInsights } from "../template-fallback.js";
-import { ComparisonEngine } from "../comparison-engine.js";
-import { DEFAULT_DIMENSIONS, DEFAULT_NORMALIZER_CONFIGS } from "../default-dimensions.js";
-import type { Scenario } from "../models.js";
-import type { ScenarioMetrics, DimensionConfig, NormalizerConfig } from "../models.js";
+import { validateInput } from "../input-validator";
+import { extractMetrics } from "../metric-extractor";
+import { normalize, getLabel, normalizeBatch } from "../normalizer";
+import { generateChartData } from "../chart-generator";
+import { generateTemplateInsights } from "../template-fallback";
+import { ComparisonEngine } from "../comparison-engine";
+import { DEFAULT_DIMENSIONS, DEFAULT_NORMALIZER_CONFIGS } from "../default-dimensions";
+import type { Scenario } from "../models";
+import type { ScenarioMetrics, DimensionConfig, NormalizerConfig } from "../models";
 
 function mkScenario(id: string, title: string, emotions: string[]): Scenario {
   return {

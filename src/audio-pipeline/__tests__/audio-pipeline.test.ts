@@ -1,12 +1,12 @@
 import { describe, it, expect } from "vitest";
 import fc from "fast-check";
-import { generateNarrationScript } from "../narration-script-generator.js";
-import { mapEmotion, getAllMappings } from "../emotion-audio-mapper.js";
-import { mergeSegment, stitchSegments } from "../audio-merger.js";
-import { createStream, pushSegment, endStream, errorStream } from "../stream-handler.js";
-import { AudioPipeline } from "../audio-pipeline.js";
-import type { Scenario, EmotionalTone, AudioTrack, AudioSegment } from "../models.js";
-import type { TTSClient, SFXClient, MusicProvider } from "../clients.js";
+import { generateNarrationScript } from "../narration-script-generator";
+import { mapEmotion, getAllMappings } from "../emotion-audio-mapper";
+import { mergeSegment, stitchSegments } from "../audio-merger";
+import { createStream, pushSegment, endStream, errorStream } from "../stream-handler";
+import { AudioPipeline } from "../audio-pipeline";
+import type { Scenario, EmotionalTone, AudioTrack, AudioSegment } from "../models";
+import type { TTSClient, SFXClient, MusicProvider } from "../clients";
 
 const TONES: EmotionalTone[] = ["hopeful","anxious","triumphant","melancholic","neutral","excited","fearful","content","desperate","relieved"];
 

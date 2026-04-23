@@ -1,5 +1,5 @@
-import type { Scenario } from "../simulation-engine/models.js";
-import type { DimensionConfig, RawMetrics } from "./models.js";
+import type { Scenario } from "../simulation-engine/models";
+import type { DimensionConfig, RawMetrics } from "./models";
 
 export function extractMetrics(scenario: Scenario, dimensions: DimensionConfig[]): RawMetrics {
   return {

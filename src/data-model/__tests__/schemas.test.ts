@@ -5,7 +5,7 @@ import {
   ScenarioSchema,
   AudioAssetSchema,
   ConversationSchema,
-} from "../schemas.js";
+} from "../schemas";
 
 const uuid = () => fc.uuid().filter((u) => /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(u));
 const isoDate = () =>

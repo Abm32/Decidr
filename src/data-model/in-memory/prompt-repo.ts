@@ -1,7 +1,7 @@
-import type { Prompt } from "../schemas.js";
-import type { PromptRepository } from "../repositories.js";
-import { PromptSchema } from "../schemas.js";
-import { EntityNotFoundError } from "../errors.js";
+import type { Prompt } from "../schemas";
+import type { PromptRepository } from "../repositories";
+import { PromptSchema } from "../schemas";
+import { EntityNotFoundError } from "../errors";
 
 export class InMemoryPromptRepo implements PromptRepository {
   private store = new Map<string, Prompt>();

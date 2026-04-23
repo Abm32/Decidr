@@ -1,8 +1,8 @@
 import { describe, it, expect } from "vitest";
 import fc from "fast-check";
-import { EntitySerializer } from "../serializer.js";
-import { DeserializationError } from "../errors.js";
-import type { Prompt, Scenario } from "../schemas.js";
+import { EntitySerializer } from "../serializer";
+import { DeserializationError } from "../errors";
+import type { Prompt, Scenario } from "../schemas";
 
 const uuid = () => fc.uuid().filter((u) => /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(u));
 const isoDate = () => fc.integer({ min: 0, max: 4102444800000 }).map((ms) => new Date(ms).toISOString());

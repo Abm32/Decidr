@@ -1,8 +1,8 @@
 import { describe, it, expect, vi } from "vitest";
 import { randomUUID } from "node:crypto";
-import { AudioAssetCache } from "../audio-cache.js";
-import { InMemoryAudioAssetRepo } from "../in-memory/audio-asset-repo.js";
-import type { AudioAsset } from "../schemas.js";
+import { AudioAssetCache } from "../audio-cache";
+import { InMemoryAudioAssetRepo } from "../in-memory/audio-asset-repo";
+import type { AudioAsset } from "../schemas";
 
 function makeAsset(overrides: Partial<AudioAsset> = {}): AudioAsset {
   const now = new Date().toISOString();

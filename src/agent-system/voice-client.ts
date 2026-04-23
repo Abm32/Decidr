@@ -3,7 +3,7 @@ import type {
   VoiceConnectionResult,
   VoiceResponseResult,
   VoiceDisconnectResult,
-} from "./models.js";
+} from "./models";
 
 export interface VoiceClient {
   connect(session: Session, systemPrompt: string): Promise<VoiceConnectionResult>;

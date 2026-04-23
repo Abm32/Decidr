@@ -1,7 +1,7 @@
-import type { AudioAsset } from "../schemas.js";
-import type { AudioAssetRepository } from "../repositories.js";
-import { AudioAssetSchema } from "../schemas.js";
-import { EntityNotFoundError } from "../errors.js";
+import type { AudioAsset } from "../schemas";
+import type { AudioAssetRepository } from "../repositories";
+import { AudioAssetSchema } from "../schemas";
+import { EntityNotFoundError } from "../errors";
 
 export class InMemoryAudioAssetRepo implements AudioAssetRepository {
   private store = new Map<string, AudioAsset>();

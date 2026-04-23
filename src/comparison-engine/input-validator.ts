@@ -1,5 +1,5 @@
-import { ScenarioSchema } from "../simulation-engine/models.js";
-import type { InputValidationResult, InputValidationError } from "./models.js";
+import { ScenarioSchema } from "../simulation-engine/models";
+import type { InputValidationResult, InputValidationError } from "./models";
 
 export function validateInput(scenarios: unknown[]): InputValidationResult {
   const errors: InputValidationError[] = [];

@@ -1,7 +1,7 @@
-import type { Scenario } from "../schemas.js";
-import type { ScenarioRepository } from "../repositories.js";
-import { ScenarioSchema } from "../schemas.js";
-import { EntityNotFoundError } from "../errors.js";
+import type { Scenario } from "../schemas";
+import type { ScenarioRepository } from "../repositories";
+import { ScenarioSchema } from "../schemas";
+import { EntityNotFoundError } from "../errors";
 
 export class InMemoryScenarioRepo implements ScenarioRepository {
   private store = new Map<string, Scenario>();

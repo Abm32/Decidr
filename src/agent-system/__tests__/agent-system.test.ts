@@ -1,11 +1,11 @@
 import { describe, it, expect } from "vitest";
 import fc from "fast-check";
-import { createAgent, serializePersona, deserializePersona } from "../agent-factory.js";
-import { validatePersona } from "../persona-validator.js";
-import { validateScenarioContext } from "../scenario-context-validator.js";
-import { buildSystemPrompt } from "../system-prompt-builder.js";
-import { SessionManager } from "../session-manager.js";
-import type { Persona, Scenario } from "../models.js";
+import { createAgent, serializePersona, deserializePersona } from "../agent-factory";
+import { validatePersona } from "../persona-validator";
+import { validateScenarioContext } from "../scenario-context-validator";
+import { buildSystemPrompt } from "../system-prompt-builder";
+import { SessionManager } from "../session-manager";
+import type { Persona, Scenario } from "../models";
 
 const mkPersona = (o: Partial<Persona> = {}): Persona =>
   ({ identity: "Future You", year: "2030", personality: "Optimistic", knowledge_scope: "Career", ...o });

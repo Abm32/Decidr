@@ -1,4 +1,4 @@
-import type { PathType, Scenario, VariationResult } from "./models.js";
+import type { PathType, Scenario, VariationResult } from "./models";
 
 const ALL_PATH_TYPES: PathType[] = ["optimistic", "pessimistic", "pragmatic", "wildcard"];
 

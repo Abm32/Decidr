@@ -1,6 +1,6 @@
 import { z } from "zod";
 
-export type { Scenario } from "../simulation-engine/models.js";
+export type { Scenario } from "../simulation-engine/models";
 
 export const DimensionScoreSchema = z.object({
   dimension: z.string().min(1),

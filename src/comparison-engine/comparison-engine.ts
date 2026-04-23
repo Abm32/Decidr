@@ -1,12 +1,12 @@
-import type { Scenario } from "../simulation-engine/models.js";
-import type { DimensionConfig, NormalizerConfig, LLMClient, ComparisonResult, ScenarioMetrics } from "./models.js";
-import { ComparisonOutputSchema } from "./models.js";
-import { validateInput } from "./input-validator.js";
-import { extractMetrics } from "./metric-extractor.js";
-import { normalizeBatch } from "./normalizer.js";
-import { generateChartData } from "./chart-generator.js";
-import { InsightGenerator } from "./insight-generator.js";
-import { DEFAULT_DIMENSIONS, DEFAULT_NORMALIZER_CONFIGS } from "./default-dimensions.js";
+import type { Scenario } from "../simulation-engine/models";
+import type { DimensionConfig, NormalizerConfig, LLMClient, ComparisonResult, ScenarioMetrics } from "./models";
+import { ComparisonOutputSchema } from "./models";
+import { validateInput } from "./input-validator";
+import { extractMetrics } from "./metric-extractor";
+import { normalizeBatch } from "./normalizer";
+import { generateChartData } from "./chart-generator";
+import { InsightGenerator } from "./insight-generator";
+import { DEFAULT_DIMENSIONS, DEFAULT_NORMALIZER_CONFIGS } from "./default-dimensions";
 
 export class ComparisonEngine {
   private dimensions: DimensionConfig[];

@@ -1,15 +1,15 @@
 import { randomUUID } from "node:crypto";
-import { validatePersona } from "./persona-validator.js";
-import { validateScenarioContext } from "./scenario-context-validator.js";
-import { buildSystemPrompt } from "./system-prompt-builder.js";
-import { PersonaSchema } from "./models.js";
+import { validatePersona } from "./persona-validator";
+import { validateScenarioContext } from "./scenario-context-validator";
+import { buildSystemPrompt } from "./system-prompt-builder";
+import { PersonaSchema } from "./models";
 import type {
   Persona,
   Scenario,
   AgentCreationResult,
   PersonaParseResult,
   ValidationError,
-} from "./models.js";
+} from "./models";
 
 export function createAgent(scenario: Scenario, persona: Persona): AgentCreationResult {
   const errors: ValidationError[] = [];

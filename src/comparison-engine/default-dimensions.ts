@@ -1,5 +1,5 @@
-import type { Scenario } from "../simulation-engine/models.js";
-import type { DimensionConfig, NormalizerConfig } from "./models.js";
+import type { Scenario } from "../simulation-engine/models";
+import type { DimensionConfig, NormalizerConfig } from "./models";
 
 const POSITIVE_TONES = new Set(["hopeful", "triumphant", "excited", "content", "relieved"]);
 const NEGATIVE_TONES = new Set(["anxious", "melancholic", "fearful", "desperate"]);

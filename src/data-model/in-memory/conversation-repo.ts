@@ -1,7 +1,7 @@
-import type { Conversation } from "../schemas.js";
-import type { ConversationRepository } from "../repositories.js";
-import { ConversationSchema } from "../schemas.js";
-import { EntityNotFoundError } from "../errors.js";
+import type { Conversation } from "../schemas";
+import type { ConversationRepository } from "../repositories";
+import { ConversationSchema } from "../schemas";
+import { EntityNotFoundError } from "../errors";
 
 export class InMemoryConversationRepo implements ConversationRepository {
   private store = new Map<string, Conversation>();

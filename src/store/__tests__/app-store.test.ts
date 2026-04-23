@@ -1,6 +1,6 @@
 import { describe, it, expect, beforeEach } from "vitest";
 import fc from "fast-check";
-import { useAppStore, getSelectedScenario, isStepCompleted, getApiState } from "../app-store.js";
+import { useAppStore, getSelectedScenario, isStepCompleted, getApiState } from "../app-store";
 import type { Step, ConversationMessage } from "@/types";
 import type { Scenario } from "@/simulation-engine/models";
 

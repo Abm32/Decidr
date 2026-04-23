@@ -1,5 +1,5 @@
-import type { LLMClient, ScenarioMetrics, RadarChartData } from "./models.js";
-import { generateTemplateInsights } from "./template-fallback.js";
+import type { LLMClient, ScenarioMetrics, RadarChartData } from "./models";
+import { generateTemplateInsights } from "./template-fallback";
 
 export class InsightGenerator {
   constructor(private llmClient?: LLMClient) {}

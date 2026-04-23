@@ -1,5 +1,5 @@
-import type { AudioAsset } from "./schemas.js";
-import type { AudioAssetRepository } from "./repositories.js";
+import type { AudioAsset } from "./schemas";
+import type { AudioAssetRepository } from "./repositories";
 
 export class AudioAssetCache {
   private cache = new Map<string, AudioAsset>();

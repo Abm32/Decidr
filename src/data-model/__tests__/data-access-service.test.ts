@@ -1,8 +1,8 @@
 import { describe, it, expect } from "vitest";
 import { randomUUID } from "node:crypto";
-import { createDataAccessService } from "../index.js";
-import { ReferentialIntegrityError } from "../errors.js";
-import type { Prompt, Scenario, AudioAsset, Conversation } from "../schemas.js";
+import { createDataAccessService } from "../index";
+import { ReferentialIntegrityError } from "../errors";
+import type { Prompt, Scenario, AudioAsset, Conversation } from "../schemas";
 
 const now = () => new Date().toISOString();
 const makePrompt = (o: Partial<Prompt> = {}): Prompt => ({ id: randomUUID(), decisionText: "test", createdAt: now(), updatedAt: now(), ...o });

@@ -1,5 +1,5 @@
-import type { ParseResult } from "./models.js";
-import { ScenarioSchema } from "./models.js";
+import type { ParseResult } from "./models";
+import { ScenarioSchema } from "./models";
 
 export function parseResponse(raw: string): ParseResult {
   // Extract JSON from possible markdown code fences or surrounding text

@@ -1,4 +1,4 @@
-import type { AudioStream, AudioSegment } from "./models.js";
+import type { AudioStream, AudioSegment } from "./models";
 
 export function createStream(scenarioId: string): AudioStream {
   return { scenarioId, state: "open", chunks: [] };

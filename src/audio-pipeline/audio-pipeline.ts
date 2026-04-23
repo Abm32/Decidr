@@ -7,13 +7,13 @@ import type {
   TTSResult,
   SFXResult,
   MusicResult,
-} from "./models.js";
-import { AudioPipelineConfigSchema } from "./models.js";
-import type { TTSClient, SFXClient, MusicProvider } from "./clients.js";
-import { generateNarrationScript } from "./narration-script-generator.js";
-import { mapEmotion } from "./emotion-audio-mapper.js";
-import { mergeSegment, stitchSegments } from "./audio-merger.js";
-import { createStream, pushSegment, endStream, errorStream } from "./stream-handler.js";
+} from "./models";
+import { AudioPipelineConfigSchema } from "./models";
+import type { TTSClient, SFXClient, MusicProvider } from "./clients";
+import { generateNarrationScript } from "./narration-script-generator";
+import { mapEmotion } from "./emotion-audio-mapper";
+import { mergeSegment, stitchSegments } from "./audio-merger";
+import { createStream, pushSegment, endStream, errorStream } from "./stream-handler";
 
 async function withRetry<T extends { success: boolean }>(
   fn: () => Promise<T>,

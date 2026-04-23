@@ -1,5 +1,5 @@
-import { ScenarioSchema } from "./models.js";
-import type { Scenario, ParseResult } from "./models.js";
+import { ScenarioSchema } from "./models";
+import type { Scenario, ParseResult } from "./models";
 
 export function serializeScenario(scenario: Scenario): string {
   return JSON.stringify(scenario);

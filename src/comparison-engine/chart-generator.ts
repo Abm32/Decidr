@@ -1,4 +1,4 @@
-import type { ScenarioMetrics, RadarChartData } from "./models.js";
+import type { ScenarioMetrics, RadarChartData } from "./models";
 
 export function generateChartData(scenarioMetrics: ScenarioMetrics[]): RadarChartData {
   const dimensions = scenarioMetrics[0].metrics.map((m) => m.dimension);

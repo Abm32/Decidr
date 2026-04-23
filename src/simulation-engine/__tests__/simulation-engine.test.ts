@@ -1,14 +1,14 @@
 import { describe, it, expect } from "vitest";
 import fc from "fast-check";
-import { validateInput } from "../input-validator.js";
-import { renderTemplate, DEFAULT_TEMPLATE } from "../prompt-template-renderer.js";
-import { validateSchema } from "../schema-validator.js";
-import { selectPathTypes, verifyDiversity } from "../variation-engine.js";
-import { parseResponse } from "../response-parser.js";
-import { serializeScenario, deserializeScenario } from "../scenario-serializer.js";
-import { SimulationEngine } from "../simulation-engine.js";
-import type { LLMClient } from "../llm-client.js";
-import type { Scenario, PathType } from "../models.js";
+import { validateInput } from "../input-validator";
+import { renderTemplate, DEFAULT_TEMPLATE } from "../prompt-template-renderer";
+import { validateSchema } from "../schema-validator";
+import { selectPathTypes, verifyDiversity } from "../variation-engine";
+import { parseResponse } from "../response-parser";
+import { serializeScenario, deserializeScenario } from "../scenario-serializer";
+import { SimulationEngine } from "../simulation-engine";
+import type { LLMClient } from "../llm-client";
+import type { Scenario, PathType } from "../models";
 
 // Helper: make a valid scenario
 function makeScenario(overrides: Partial<Scenario> = {}): Scenario {

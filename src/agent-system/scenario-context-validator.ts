@@ -1,5 +1,5 @@
-import { ScenarioSchema } from "./models.js";
-import type { ScenarioValidationResult, ValidationError } from "./models.js";
+import { ScenarioSchema } from "./models";
+import type { ScenarioValidationResult, ValidationError } from "./models";
 
 export function validateScenarioContext(scenario: unknown): ScenarioValidationResult {
   const result = ScenarioSchema.safeParse(scenario);

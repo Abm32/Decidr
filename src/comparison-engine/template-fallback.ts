@@ -1,4 +1,4 @@
-import type { ScenarioMetrics } from "./models.js";
+import type { ScenarioMetrics } from "./models";
 
 export function generateTemplateInsights(scenarioMetrics: ScenarioMetrics[]): string {
   const lines: string[] = [];

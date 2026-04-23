@@ -1,4 +1,4 @@
-import type { EmotionalTone, AudioStyleParams, EmotionAudioMap } from "./models.js";
+import type { EmotionalTone, AudioStyleParams, EmotionAudioMap } from "./models";
 
 const MAPPINGS: EmotionAudioMap = {
   hopeful:     { voiceStyle: { stability: 0.7, similarityBoost: 0.8, style: 0.6, speakingRate: 1.0 }, ambientDescriptor: "birds chirping, gentle breeze", musicMood: "uplifting orchestral" },

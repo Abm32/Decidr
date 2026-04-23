@@ -1,4 +1,4 @@
-import type { AudioTrack, AudioSegment, AudioExperience, AudioFormat } from "./models.js";
+import type { AudioTrack, AudioSegment, AudioExperience, AudioFormat } from "./models";
 
 export interface AudioLayers {
   narration: AudioTrack;
