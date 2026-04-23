@@ -1,0 +1,17 @@
+{
+  "enabled": true,
+  "name": "Validate Schema Outputs",
+  "description": "Validates that schema files conform to Zod patterns when edited",
+  "version": "1",
+  "when": {
+    "type": "fileEdited",
+    "patterns": [
+      "**/schemas.ts",
+      "**/schemas/*.ts"
+    ]
+  },
+  "then": {
+    "type": "askAgent",
+    "prompt": "Check the edited schema file for correctness. Verify all Zod schemas have inferred TypeScript types exported, all schemas use proper validation constraints, and there are no type errors. Run `npx tsc --noEmit` to verify."
+  }
+}
