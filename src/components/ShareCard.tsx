@@ -49,9 +49,9 @@ export function ShareCard({ prompt, scenarios, selectedScenarioId }: Props) {
   }
 
   return (
-    <div className="rounded-2xl border border-gray-800 bg-gray-900/80 p-6">
+    <div className="rounded-2xl border border-gray-800 bg-gray-900/80 p-4 sm:p-6">
       {/* Card preview */}
-      <div className="rounded-xl border border-gray-700 bg-gradient-to-br from-gray-900 to-gray-950 p-5">
+      <div className="rounded-xl border border-gray-700 bg-gradient-to-br from-gray-900 to-gray-950 p-4 sm:p-5">
         <div className="flex items-center gap-2 text-xs text-gray-500">
           <span className="text-blue-400">◆</span> Decidr — Decision Card
         </div>

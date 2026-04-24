@@ -44,19 +44,19 @@ export function AudioPlayer({ audioUrl, isLoading, error, onRetry, onComplete }:
   const pct = duration > 0 ? (current / duration) * 100 : 0;
 
   return (
-    <div className="rounded-2xl border border-gray-800 bg-gray-900/60 p-6">
+    <div className="rounded-2xl border border-gray-800 bg-gray-900/60 p-4 sm:p-6">
       <audio ref={ref} src={audioUrl} preload="metadata" />
 
-      <div className="flex items-center gap-2 text-xs text-gray-500 mb-4">
+      <div className="flex items-center gap-2 text-[11px] sm:text-xs text-gray-500 mb-3 sm:mb-4">
         <span className="h-2 w-2 rounded-full bg-violet-500 animate-pulse" />
         Immersive scenario narration
       </div>
 
-      <div className="flex items-center gap-4">
+      <div className="flex items-center gap-3 sm:gap-4">
         <button
           aria-label={playing ? 'Pause' : 'Play'}
           onClick={() => { playing ? ref.current?.pause() : ref.current?.play(); setPlaying(!playing); }}
-          className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-blue-600 text-lg text-white shadow-lg shadow-blue-600/20 transition hover:bg-blue-500"
+          className="flex h-10 w-10 sm:h-12 sm:w-12 shrink-0 items-center justify-center rounded-full bg-blue-600 text-base sm:text-lg text-white shadow-lg shadow-blue-600/20 transition hover:bg-blue-500"
         >
           {playing ? '⏸' : '▶'}
         </button>
@@ -76,10 +76,10 @@ export function AudioPlayer({ audioUrl, isLoading, error, onRetry, onComplete }:
         </div>
       </div>
 
-      <div className="mt-6 flex justify-end">
+      <div className="mt-4 sm:mt-6 flex justify-end">
         <button
           onClick={onComplete}
-          className="rounded-full border border-gray-700 px-5 py-2 text-sm font-medium text-gray-300 transition hover:border-gray-500 hover:text-white"
+          className="rounded-full border border-gray-700 px-4 sm:px-5 py-1.5 sm:py-2 text-xs sm:text-sm font-medium text-gray-300 transition hover:border-gray-500 hover:text-white"
         >
           Skip to conversation →
         </button>

@@ -155,7 +155,7 @@ export default function AppPage() {
       </div>
     ),
     'scenario-view': (
-      <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
+      <div className="grid gap-4 sm:gap-5 grid-cols-1 md:grid-cols-2 xl:grid-cols-3">
         {scenarioSet?.map((s, i) => (
           <ScenarioCard key={s.scenario_id} scenario={s} isSelected={s.scenario_id === selectedScenarioId} onSelect={() => handleSelectScenario(s.scenario_id)} animationDelay={i * 0.12} />
         ))}
@@ -191,27 +191,27 @@ export default function AppPage() {
     <div className="min-h-screen">
       {/* Header */}
       <header className="sticky top-0 z-20 border-b border-gray-800/60 bg-gray-950/80 backdrop-blur-md">
-        <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-3">
-          <Link href="/" className="flex items-center gap-2 transition hover:opacity-80">
-            <Image src="/logo/app-logo.png" alt="Decidr" width={28} height={28} />
-            <span className="text-lg font-bold tracking-tight text-white">Decidr</span>
+        <div className="mx-auto flex max-w-6xl items-center justify-between px-3 sm:px-6 py-2.5 sm:py-3 gap-2">
+          <Link href="/" className="flex shrink-0 items-center gap-1.5 sm:gap-2 transition hover:opacity-80">
+            <Image src="/logo/app-logo.png" alt="Decidr" width={24} height={24} className="sm:w-7 sm:h-7" />
+            <span className="text-sm sm:text-lg font-bold tracking-tight text-white hidden sm:inline">Decidr</span>
           </Link>
           <StepNavigator currentStep={currentStep} completedSteps={completedSteps} onStepChange={store.setCurrentStep} />
         </div>
       </header>
 
       {/* Main */}
-      <main className="mx-auto max-w-6xl px-6 py-10">
-        <div className="mb-8">
+      <main className="mx-auto max-w-6xl px-3 sm:px-6 py-6 sm:py-10">
+        <div className="mb-5 sm:mb-8">
           <motion.h2
             key={currentStep}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            className="text-2xl font-bold tracking-tight text-white"
+            className="text-lg sm:text-2xl font-bold tracking-tight text-white"
           >
             {STEP_TITLES[currentStep]}
           </motion.h2>
-          <p className="mt-1 text-sm text-gray-500">{STEP_SUBTITLES[currentStep]}</p>
+          <p className="mt-1 text-xs sm:text-sm text-gray-500">{STEP_SUBTITLES[currentStep]}</p>
         </div>
 
         <ErrorBoundary fallback={<p className="p-4 text-red-400">Something went wrong. Please refresh.</p>}>
