@@ -1,5 +1,5 @@
 import React from 'react';
-import { AbsoluteFill, useCurrentFrame, interpolate, Img, staticFile } from 'remotion';
+import { AbsoluteFill, useCurrentFrame, interpolate, staticFile } from 'remotion';
 import { COLORS } from '../config';
 import { TextReveal } from '../components';
 
@@ -30,16 +30,18 @@ export const Outro: React.FC = () => {
           <TextReveal text="You don't choose blindly anymore." startFrame={60} fontSize={48} />
         </div>
 
-        <div style={{
-          opacity: logoOpacity,
-          transform: `scale(${logoScale * pulse})`,
-          filter: `drop-shadow(0 0 ${glowIntensity}px ${COLORS.primary}) drop-shadow(0 0 ${glowIntensity * 2}px ${COLORS.glow})`,
-        }}>
-          <Img
-            src={staticFile('logo/Decidr.png')}
-            style={{ height: 120, objectFit: 'contain' }}
-          />
-        </div>
+        <img
+          src={staticFile('logo/Decidr.png')}
+          alt="Decidr"
+          style={{
+            width: 300,
+            height: 300,
+            objectFit: 'contain',
+            opacity: logoOpacity,
+            transform: `scale(${logoScale * pulse})`,
+            filter: `drop-shadow(0 0 ${glowIntensity}px ${COLORS.primary}) drop-shadow(0 0 ${glowIntensity * 2}px ${COLORS.glow})`,
+          }}
+        />
       </div>
     </AbsoluteFill>
   );
