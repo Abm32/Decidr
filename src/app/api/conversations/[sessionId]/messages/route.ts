@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { sessionManager, scenarioStore } from "../../_state";
+import { logEvent } from "@/api/analytics";
 import { randomUUID } from "node:crypto";
 
 export async function POST(req: NextRequest, { params }: { params: Promise<{ sessionId: string }> }) {
@@ -12,6 +13,7 @@ export async function POST(req: NextRequest, { params }: { params: Promise<{ ses
     if (!session) return NextResponse.json({ error: "Session not found" }, { status: 404 });
 
     sessionManager.addMessage(sessionId, { timestamp: new Date(), role: "user", content });
+    logEvent({ type: "conversation", question: content });
 
     // In production, send to LLM with system prompt from scenarioStore
     // For MVP, return a contextual response

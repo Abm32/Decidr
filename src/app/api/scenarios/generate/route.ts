@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { SimulationEngine } from "@/simulation-engine/simulation-engine";
+import { logEvent } from "@/api/analytics";
 import type { LLMClient } from "@/simulation-engine/llm-client";
 
 const llmClient: LLMClient = {
@@ -31,6 +32,7 @@ export async function POST(req: NextRequest) {
     }
     const result = await engine.simulate(prompt);
     if (!result.success) return NextResponse.json({ error: result.error }, { status: 500 });
+    logEvent({ type: "decision", prompt, scenarioCount: result.scenarios.length, titles: result.scenarios.map((s) => s.title) });
     return NextResponse.json(result.scenarios);
   } catch (e) {
     return NextResponse.json({ error: "Internal server error" }, { status: 500 });

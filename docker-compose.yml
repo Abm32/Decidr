@@ -5,9 +5,14 @@ services:
       - "3000:3000"
     env_file:
       - .env
+    volumes:
+      - analytics:/tmp/decidr-analytics
     restart: unless-stopped
     healthcheck:
       test: ["CMD", "wget", "-q", "--spider", "http://localhost:3000"]
       interval: 30s
       timeout: 5s
       retries: 3
+
+volumes:
+  analytics:
