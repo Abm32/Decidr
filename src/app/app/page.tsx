@@ -126,8 +126,7 @@ export default function AppPage() {
     if (currentStep !== 'comparison' || !scenarioSet || apiComparison.status === 'loading' || apiComparison.status === 'success') return;
     (async () => {
       store.setApiState('getComparison', { status: 'loading' });
-      const ids = scenarioSet.map((s) => s.scenario_id);
-      const result = await apiClient.getComparison(ids);
+      const result = await apiClient.getComparison(scenarioSet);
       if (result.success) {
         store.setComparisonData(result.data);
         store.setApiState('getComparison', { status: 'success' });

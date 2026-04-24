@@ -108,9 +108,9 @@ export function createApiClient(config?: ApiClientConfig) {
     },
 
     getComparison(
-      scenarioIds: string[],
+      scenarios: Scenario[],
     ): Promise<ApiResult<ComparisonData>> {
-      return post("/comparison", { scenarioIds });
+      return post("/comparison", { scenarios });
     },
   };
 }
