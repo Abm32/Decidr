@@ -45,7 +45,7 @@ const DecidrDemo = () => (
     {/* Captions layer */}
     {scenes.map(({ from, duration, vo, caption }, i) => (
       <Sequence key={`cap-${i}`} from={from} durationInFrames={duration}>
-        <Caption words={caption.split(' ')} startAt={vo.startAt} fpw={4} />
+        <Caption words={caption.text.split(' ')} startAt={vo.startAt} fpw={caption.fpw} />
       </Sequence>
     ))}
 

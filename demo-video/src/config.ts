@@ -44,15 +44,15 @@ export const VOICEOVER = {
   outro:       { file: 'audio/09-outro.mp3',       startAt: 0   },
 } as const;
 
-// Caption text for each scene (synced to voiceover)
+// Caption text and timing for each scene (fpw = frames per word, matched to audio duration)
 export const CAPTIONS = {
-  hook:        "What if you could see your future before you decide?",
-  problem:     "Every day, we face decisions that shape our lives. Should I take the job? Move to a new city? Start a business? And every time we're just guessing.",
-  intro:       "Introducing Decidr. The decision intelligence engine that lets you explore multiple futures before you commit.",
-  input:       "Just describe the decision you're facing. In plain language. Decidr's AI takes it from there.",
-  generation:  "In seconds, the engine generates multiple contrasting scenarios. An optimistic path. A pessimistic one. And everything in between. Each with a detailed timeline.",
-  audio:       "Then each scenario comes alive through immersive audio narration. You don't just read your future. You hear it. You feel it.",
-  interaction: "And here's where it gets powerful. You can actually talk to your future self. Ask questions. Get perspective. Like having a conversation with someone who's already lived through your decision.",
-  comparison:  "Finally, compare every future side by side. Happiness, risk, growth. Data-driven insights to guide your choice.",
-  outro:       "You don't choose blindly anymore. Decidr.",
+  hook:        { text: "What if you could see your future before you decide?", fpw: 8 },
+  problem:     { text: "Every day, we face decisions that shape our lives. Should I take the job? Move to a new city? Start a business? And every time we're just guessing.", fpw: 11 },
+  intro:       { text: "Introducing Decidr. The decision intelligence engine that lets you explore multiple futures before you commit.", fpw: 12 },
+  input:       { text: "Just describe the decision you're facing. In plain language. Decidr's AI takes it from there.", fpw: 10 },
+  generation:  { text: "In seconds, the engine generates multiple contrasting scenarios. An optimistic path. A pessimistic one. And everything in between. Each with a detailed timeline.", fpw: 13 },
+  audio:       { text: "Then each scenario comes alive through immersive audio narration. You don't just read your future. You hear it. You feel it.", fpw: 13 },
+  interaction: { text: "And here's where it gets powerful. You can actually talk to your future self. Ask questions. Get perspective. Like having a conversation with someone who's already lived through your decision.", fpw: 10 },
+  comparison:  { text: "Finally, compare every future side by side. Happiness, risk, growth. Data-driven insights to guide your choice.", fpw: 16 },
+  outro:       { text: "You don't choose blindly anymore. Decidr.", fpw: 9 },
 } as const;
