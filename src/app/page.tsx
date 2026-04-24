@@ -60,9 +60,10 @@ export default function Page() {
   // audio-experience: fetch on entry
   useEffect(() => {
     if (currentStep !== 'audio-experience' || !selectedScenarioId || apiAudio.status === 'loading' || apiAudio.status === 'success') return;
+    const scenario = scenarioSet?.find((s) => s.scenario_id === selectedScenarioId);
     (async () => {
       store.setApiState('generateAudio', { status: 'loading' });
-      const result = await apiClient.generateAudio(selectedScenarioId);
+      const result = await apiClient.generateAudio(selectedScenarioId, scenario ?? undefined);
       if (result.success) {
         store.updateAudioState({ audioUrl: result.data.audioUrl, duration: result.data.totalDurationMs / 1000 });
         store.setApiState('generateAudio', { status: 'success' });
@@ -70,7 +71,7 @@ export default function Page() {
         store.setApiState('generateAudio', { status: 'error', error: result.error });
       }
     })();
-  }, [currentStep, selectedScenarioId, apiAudio.status, store]);
+  }, [currentStep, selectedScenarioId, apiAudio.status, store, scenarioSet]);
 
   const handleAudioComplete = useCallback(() => {
     store.completeStep('audio-experience');

@@ -58,7 +58,7 @@ async function request<T>(
 
 export function createApiClient(config?: ApiClientConfig) {
   const base = config?.baseUrl ?? "/api";
-  const timeout = config?.timeoutMs ?? 30_000;
+  const timeout = config?.timeoutMs ?? 60_000;
   const headers = { "Content-Type": "application/json" };
 
   const post = <T>(path: string, body: unknown) =>
@@ -84,8 +84,9 @@ export function createApiClient(config?: ApiClientConfig) {
 
     generateAudio(
       scenarioId: string,
+      scenario?: Scenario,
     ): Promise<ApiResult<{ audioUrl: string; totalDurationMs: number }>> {
-      return post("/audio/generate", { scenarioId });
+      return post("/audio/generate", { scenarioId, scenario });
     },
 
     startConversation(

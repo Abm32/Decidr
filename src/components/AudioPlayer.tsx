@@ -61,6 +61,12 @@ export function AudioPlayer({ audioUrl, isLoading, error, onRetry, onComplete }:
         className="flex-1 accent-blue-500"
       />
       <span className="text-xs text-gray-400 tabular-nums">{fmt(current)} / {fmt(duration)}</span>
+      <button
+        onClick={onComplete}
+        className="ml-2 rounded bg-gray-700 px-3 py-1 text-xs text-gray-300 hover:bg-gray-600"
+      >
+        Skip →
+      </button>
     </div>
   );
 }
