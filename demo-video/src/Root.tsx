@@ -65,6 +65,11 @@ const DecidrDemo = () => (
         <Audio src={staticFile(sfx.file)} volume={0.4} />
       </Sequence>
     ))}
+
+    {/* Intro reveal SFX — hits when DECIDR logo appears */}
+    <Sequence from={SCENES.intro.from + 55}>
+      <Audio src={staticFile('audio/sfx-intro-reveal.mp3')} volume={0.55} />
+    </Sequence>
   </AbsoluteFill>
 );
 
