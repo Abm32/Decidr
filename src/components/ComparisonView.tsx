@@ -16,9 +16,9 @@ interface Props {
 }
 
 export function ComparisonView({ scenarios, comparisonData, isLoading, error, onRetry }: Props) {
-  if (isLoading) return <LoadingIndicator message="Comparing scenarios..." />;
+  if (isLoading) return <LoadingIndicator message="Analyzing and comparing scenarios..." />;
   if (error) return <ErrorDisplay error={error} onRetry={onRetry} />;
-  if (!comparisonData) return <p className="text-sm text-gray-400">No comparison data</p>;
+  if (!comparisonData) return <p className="text-sm text-gray-500">No comparison data</p>;
 
   const chartRows = comparisonData.metrics.map((m) => {
     const row: Record<string, string | number> = { metric: m.name };
@@ -36,17 +36,17 @@ export function ComparisonView({ scenarios, comparisonData, isLoading, error, on
 
   return (
     <div className="space-y-6">
-      <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+      <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
         {scenarios.map((sc) => (
-          <div key={sc.scenario_id} className="rounded-lg bg-gray-800 p-4">
-            <h4 className="text-sm font-semibold text-gray-100">{sc.title}</h4>
-            <ul className="mt-2 space-y-1">
+          <div key={sc.scenario_id} className="rounded-2xl border border-gray-800 bg-gray-900/60 p-5">
+            <h4 className="text-sm font-semibold text-white">{sc.title}</h4>
+            <ul className="mt-3 space-y-2">
               {comparisonData.metrics.map((m) => {
                 const v = m.values.find((v) => v.scenarioId === sc.scenario_id);
                 return v ? (
-                  <li key={m.name} className="flex justify-between text-xs text-gray-300">
-                    <span>{m.name}</span>
-                    <span className="text-gray-400">{v.value} – {v.label}</span>
+                  <li key={m.name} className="flex items-center justify-between text-xs">
+                    <span className="text-gray-400">{m.name}</span>
+                    <span className="tabular-nums text-gray-300">{v.value}<span className="ml-1 text-gray-500">— {v.label}</span></span>
                   </li>
                 ) : null;
               })}
@@ -55,23 +55,24 @@ export function ComparisonView({ scenarios, comparisonData, isLoading, error, on
         ))}
       </div>
 
-      <div className="rounded-lg bg-gray-800 p-4">
+      <div className="rounded-2xl border border-gray-800 bg-gray-900/60 p-5">
+        <h4 className="mb-4 text-sm font-semibold text-white">Comparison Chart</h4>
         <ResponsiveContainer width="100%" height={300}>
           <BarChart data={chartRows}>
-            <XAxis dataKey="metric" tick={{ fill: '#9ca3af', fontSize: 12 }} />
-            <YAxis tick={{ fill: '#9ca3af', fontSize: 12 }} />
-            <Tooltip contentStyle={{ backgroundColor: '#1f2937', border: 'none', color: '#e5e7eb' }} />
-            <Legend wrapperStyle={{ color: '#d1d5db' }} />
+            <XAxis dataKey="metric" tick={{ fill: '#6b7280', fontSize: 11 }} axisLine={false} tickLine={false} />
+            <YAxis tick={{ fill: '#6b7280', fontSize: 11 }} axisLine={false} tickLine={false} />
+            <Tooltip contentStyle={{ backgroundColor: '#111827', border: '1px solid #1f2937', borderRadius: 12, color: '#e5e7eb', fontSize: 12 }} />
+            <Legend wrapperStyle={{ color: '#9ca3af', fontSize: 12 }} />
             {barKeys.map((key, i) => (
-              <Bar key={key} dataKey={key} fill={COLORS[i % COLORS.length]} />
+              <Bar key={key} dataKey={key} fill={COLORS[i % COLORS.length]} radius={[4, 4, 0, 0]} />
             ))}
           </BarChart>
         </ResponsiveContainer>
       </div>
 
-      <div className="rounded-lg bg-gray-800 p-4">
-        <h4 className="text-sm font-semibold text-gray-100">Insights</h4>
-        <p className="mt-2 text-sm text-gray-300">{comparisonData.summary}</p>
+      <div className="rounded-2xl border border-gray-800 bg-gray-900/60 p-5">
+        <h4 className="text-sm font-semibold text-white">AI Insights</h4>
+        <p className="mt-3 text-sm leading-relaxed text-gray-400">{comparisonData.summary}</p>
       </div>
     </div>
   );
