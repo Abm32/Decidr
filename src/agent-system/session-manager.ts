@@ -85,4 +85,10 @@ export class SessionManager {
       }
     }
   }
+
+  closeAllActive(): void {
+    for (const session of this.sessions.values()) {
+      if (session.status === "active") session.status = "closed";
+    }
+  }
 }

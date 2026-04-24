@@ -31,6 +31,7 @@ interface AppActions {
   updateAudioState: (state: Partial<AudioPlaybackState>) => void;
   addConversationMessage: (message: ConversationMessage) => void;
   setComparisonData: (data: ComparisonData) => void;
+  setConversationSessionId: (id: string) => void;
   resetConversation: () => void;
 }
 
@@ -85,6 +86,11 @@ export const useAppStore = create<AppState & AppActions>()((set, get) => ({
     })),
 
   setComparisonData: (data) => set({ comparisonData: data }),
+
+  setConversationSessionId: (id) =>
+    set((s) => ({
+      conversationSession: { ...s.conversationSession, sessionId: id, isActive: true },
+    })),
 
   resetConversation: () =>
     set({ conversationSession: initialConversationSession }),

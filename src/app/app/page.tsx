@@ -86,17 +86,19 @@ export default function AppPage() {
 
   useEffect(() => {
     if (currentStep !== 'conversation' || !selectedScenarioId || conversationSession.sessionId || apiStartConvo.status === 'loading') return;
+    const scenario = scenarioSet?.find((s) => s.scenario_id === selectedScenarioId);
     (async () => {
       store.setApiState('startConversation', { status: 'loading' });
-      const result = await apiClient.startConversation(selectedScenarioId);
+      const result = await apiClient.startConversation(selectedScenarioId, scenario ?? undefined);
       if (result.success) {
-        store.addConversationMessage({ id: 'system-start', role: 'agent', content: 'Conversation started. Ask me anything about this scenario.', timestamp: new Date() });
+        store.setConversationSessionId(result.data.sessionId);
+        store.addConversationMessage({ id: 'system-start', role: 'agent', content: `I'm the future version of you from the "${scenario?.title ?? 'selected'}" timeline. Ask me anything about this journey.`, timestamp: new Date() });
         store.setApiState('startConversation', { status: 'success' });
       } else {
         store.setApiState('startConversation', { status: 'error', error: result.error });
       }
     })();
-  }, [currentStep, selectedScenarioId, conversationSession.sessionId, apiStartConvo.status, store]);
+  }, [currentStep, selectedScenarioId, conversationSession.sessionId, apiStartConvo.status, store, scenarioSet]);
 
   const handleSendMessage = useCallback(async (content: string) => {
     const sid = conversationSession.sessionId ?? 'default';

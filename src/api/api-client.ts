@@ -91,8 +91,9 @@ export function createApiClient(config?: ApiClientConfig) {
 
     startConversation(
       scenarioId: string,
+      scenario?: Scenario,
     ): Promise<ApiResult<{ sessionId: string }>> {
-      return post("/conversations/start", { scenarioId });
+      return post("/conversations/start", { scenarioId, scenario });
     },
 
     sendMessage(
