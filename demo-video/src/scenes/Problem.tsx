@@ -4,16 +4,17 @@ import {COLORS} from '../config';
 import {TextReveal} from '../components';
 
 const questions = [
-	{text: 'Should I take the job?', start: 0, end: 60, top: '35%', left: '25%'},
-	{text: 'Move to a new city?', start: 40, end: 100, top: '55%', left: '55%'},
-	{text: 'Start a business?', start: 80, end: 140, top: '40%', left: '15%'},
+	{text: 'Should I take the job?', start: 0, end: 90, top: '35%', left: '25%'},
+	{text: 'Move to a new city?', start: 60, end: 150, top: '55%', left: '55%'},
+	{text: 'Start a business?', start: 120, end: 210, top: '40%', left: '15%'},
+	{text: 'End the relationship?', start: 150, end: 240, top: '60%', left: '35%'},
 ];
 
 const Problem: React.FC = () => {
 	const frame = useCurrentFrame();
 
 	const flickerOpacity = 0.03 + Math.sin(frame * 0.7) * 0.02 + Math.sin(frame * 1.3) * 0.015;
-	const allFadeOut = interpolate(frame, [130, 155], [1, 0], {extrapolateLeft: 'clamp', extrapolateRight: 'clamp'});
+	const allFadeOut = interpolate(frame, [230, 260], [1, 0], {extrapolateLeft: 'clamp', extrapolateRight: 'clamp'});
 
 	return (
 		<AbsoluteFill style={{backgroundColor: COLORS.bg}}>
@@ -39,8 +40,8 @@ const Problem: React.FC = () => {
 			<AbsoluteFill style={{justifyContent: 'center', alignItems: 'center'}}>
 				<TextReveal
 					text="Every decision is a guess."
-					startFrame={155}
-					duration={55}
+					startFrame={260}
+					duration={80}
 					style={{
 						fontSize: 56, fontWeight: 700, color: COLORS.text,
 						textAlign: 'center',

@@ -15,8 +15,8 @@ const MetricBar: React.FC<{
   const { fps } = useVideoConfig();
   const sProgress = spring({ frame: Math.max(0, frame - startFrame), fps, config: { damping: 15, mass: 0.8 } });
   const jProgress = spring({ frame: Math.max(0, frame - startFrame - 10), fps, config: { damping: 15, mass: 0.8 } });
-  const shimmer = frame >= 180
-    ? interpolate(Math.sin((frame - 180) * 0.1), [-1, 1], [0.85, 1])
+  const shimmer = frame >= 240
+    ? interpolate(Math.sin((frame - 240) * 0.1), [-1, 1], [0.85, 1])
     : 1;
 
   return (

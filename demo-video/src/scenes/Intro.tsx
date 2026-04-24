@@ -13,11 +13,11 @@ const Intro: React.FC = () => {
 	const {fps} = useVideoConfig();
 
 	const logoOpacity = interpolate(frame, [55, 70], [0, 1], {extrapolateLeft: 'clamp', extrapolateRight: 'clamp'});
-	const glowIntensity = interpolate(frame, [60, 120], [0, 40], {extrapolateLeft: 'clamp', extrapolateRight: 'clamp'});
-	const glowBg = interpolate(frame, [60, 120], [0, 0.25], {extrapolateLeft: 'clamp', extrapolateRight: 'clamp'});
+	const glowIntensity = interpolate(frame, [60, 160], [0, 40], {extrapolateLeft: 'clamp', extrapolateRight: 'clamp'});
+	const glowBg = interpolate(frame, [60, 160], [0, 0.25], {extrapolateLeft: 'clamp', extrapolateRight: 'clamp'});
 
-	const subtitleOpacity = interpolate(frame, [120, 145], [0, 1], {extrapolateLeft: 'clamp', extrapolateRight: 'clamp'});
-	const lineWidth = interpolate(frame, [130, 170], [0, 200], {extrapolateLeft: 'clamp', extrapolateRight: 'clamp'});
+	const subtitleOpacity = interpolate(frame, [150, 180], [0, 1], {extrapolateLeft: 'clamp', extrapolateRight: 'clamp'});
+	const lineWidth = interpolate(frame, [160, 220], [0, 200], {extrapolateLeft: 'clamp', extrapolateRight: 'clamp'});
 
 	return (
 		<AbsoluteFill style={{backgroundColor: COLORS.bg}}>
@@ -31,7 +31,7 @@ const Intro: React.FC = () => {
 				<div style={{position: 'relative', opacity: logoOpacity}}>
 					{PARTICLES.map((p, i) => {
 						const dist = spring({frame: frame - 60, fps, config: {damping: 12, mass: 0.5 + i * 0.05}}) * (80 + i * 15);
-						const particleOpacity = interpolate(frame, [60, 90, 110, 130], [0, 1, 1, 0], {extrapolateLeft: 'clamp', extrapolateRight: 'clamp'});
+						const particleOpacity = interpolate(frame, [60, 90, 140, 170], [0, 1, 1, 0], {extrapolateLeft: 'clamp', extrapolateRight: 'clamp'});
 						return (
 							<div key={i} style={{
 								position: 'absolute',

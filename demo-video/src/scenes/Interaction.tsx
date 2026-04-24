@@ -28,8 +28,8 @@ export const Interaction: React.FC = () => {
   const showTyping = frame >= 120 && frame < 200;
   const aiSlide = interpolate(frame, [200, 260], [-80, 0], { extrapolateLeft: 'clamp', extrapolateRight: 'clamp' });
   const aiOpacity = interpolate(frame, [200, 230], [0, 1], { extrapolateLeft: 'clamp', extrapolateRight: 'clamp' });
-  const glowPulse = frame >= 280
-    ? interpolate(Math.sin((frame - 280) * 0.3), [-1, 1], [0.4, 1])
+  const glowPulse = frame >= 300
+    ? interpolate(Math.sin((frame - 300) * 0.3), [-1, 1], [0.4, 1])
     : 0.4;
 
   return (
