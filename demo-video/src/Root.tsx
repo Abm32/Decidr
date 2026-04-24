@@ -1,5 +1,6 @@
 import { AbsoluteFill, Composition, Sequence, Audio, staticFile } from "remotion";
-import { SCENES, VOICEOVER, TOTAL_FRAMES, FPS, WIDTH, HEIGHT } from "./config";
+import { SCENES, VOICEOVER, CAPTIONS, TOTAL_FRAMES, FPS, WIDTH, HEIGHT } from "./config";
+import { Caption } from "./components";
 import Hook from "./scenes/Hook";
 import Problem from "./scenes/Problem";
 import Intro from "./scenes/Intro";
@@ -10,19 +11,16 @@ import { Interaction } from "./scenes/Interaction";
 import { Comparison } from "./scenes/Comparison";
 import { Outro } from "./scenes/Outro";
 
-const scenes = [
-  { Comp: Hook, ...SCENES.hook, vo: VOICEOVER.hook },
-  { Comp: Problem, ...SCENES.problem, vo: VOICEOVER.problem },
-  { Comp: Intro, ...SCENES.intro, vo: VOICEOVER.intro },
-  { Comp: Input, ...SCENES.input, vo: VOICEOVER.input },
-  { Comp: Generation, ...SCENES.generation, vo: VOICEOVER.generation },
-  { Comp: AudioScene, ...SCENES.audio, vo: VOICEOVER.audio },
-  { Comp: Interaction, ...SCENES.interaction, vo: VOICEOVER.interaction },
-  { Comp: Comparison, ...SCENES.comparison, vo: VOICEOVER.comparison },
-  { Comp: Outro, ...SCENES.outro, vo: VOICEOVER.outro },
-] as const;
+const sceneKeys = ['hook', 'problem', 'intro', 'input', 'generation', 'audio', 'interaction', 'comparison', 'outro'] as const;
+const sceneComps = [Hook, Problem, Intro, Input, Generation, AudioScene, Interaction, Comparison, Outro];
 
-// Background music segments (~22s each, covering 91s total)
+const scenes = sceneKeys.map((key, i) => ({
+  Comp: sceneComps[i],
+  ...SCENES[key],
+  vo: VOICEOVER[key],
+  caption: CAPTIONS[key],
+}));
+
 const BG_MUSIC = [
   { file: 'audio/bg-ambient.mp3', from: 0 },
   { file: 'audio/bg-ambient-2.mp3', from: 22 * FPS },
@@ -30,9 +28,8 @@ const BG_MUSIC = [
   { file: 'audio/bg-ambient-4.mp3', from: 66 * FPS },
 ];
 
-// Transition SFX at each scene boundary (alternating two sounds)
 const TRANSITION_SFX = scenes.slice(1).map((s, i) => ({
-  from: s.from - 5, // slightly before scene starts
+  from: s.from - 5,
   file: i % 2 === 0 ? 'audio/sfx-transition.mp3' : 'audio/sfx-transition-2.mp3',
 }));
 
@@ -45,6 +42,13 @@ const DecidrDemo = () => (
       </Sequence>
     ))}
 
+    {/* Captions layer */}
+    {scenes.map(({ from, duration, vo, caption }, i) => (
+      <Sequence key={`cap-${i}`} from={from} durationInFrames={duration}>
+        <Caption words={caption.split(' ')} startAt={vo.startAt} fpw={4} />
+      </Sequence>
+    ))}
+
     {/* Voiceover layer */}
     {scenes.map(({ from, vo }, i) => (
       <Sequence key={`vo-${i}`} from={from + vo.startAt}>
@@ -52,7 +56,7 @@ const DecidrDemo = () => (
       </Sequence>
     ))}
 
-    {/* Background music layer (low volume, continuous) */}
+    {/* Background music */}
     {BG_MUSIC.map((bg, i) => (
       <Sequence key={`bg-${i}`} from={bg.from}>
         <Audio src={staticFile(bg.file)} volume={0.12} />
@@ -66,7 +70,7 @@ const DecidrDemo = () => (
       </Sequence>
     ))}
 
-    {/* Intro reveal SFX — hits when DECIDR logo appears */}
+    {/* Intro reveal SFX */}
     <Sequence from={SCENES.intro.from + 55}>
       <Audio src={staticFile('audio/sfx-intro-reveal.mp3')} volume={0.55} />
     </Sequence>

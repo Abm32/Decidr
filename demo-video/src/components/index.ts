@@ -3,3 +3,4 @@ export {GlitchText} from './GlitchText';
 export {UIFrame} from './UIFrame';
 export {SplitScreen} from './SplitScreen';
 export {Waveform} from './Waveform';
+export {Caption} from './Caption';
