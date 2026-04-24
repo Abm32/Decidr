@@ -10,7 +10,7 @@ const llmClient: LLMClient = {
       const res = await fetch("https://api.openai.com/v1/chat/completions", {
         method: "POST",
         headers: { "Content-Type": "application/json", Authorization: `Bearer ${apiKey}` },
-        body: JSON.stringify({ model: "gpt-4", messages: [{ role: "user", content: prompt }], temperature: 0.8 }),
+        body: JSON.stringify({ model: "gpt-5.4", messages: [{ role: "user", content: prompt }], temperature: 0.8 }),
       });
       if (!res.ok) return { success: false, error: `OpenAI API error: ${res.status}` };
       const data = await res.json();
