@@ -2,6 +2,7 @@
 
 import { useEffect, useCallback } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { AnimatePresence, motion } from 'framer-motion';
 import { useAppStore, getApiState } from '@/store/app-store';
 import { createApiClient } from '@/api/api-client';
@@ -186,8 +187,9 @@ export default function AppPage() {
       {/* Header */}
       <header className="sticky top-0 z-20 border-b border-gray-800/60 bg-gray-950/80 backdrop-blur-md">
         <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-3">
-          <Link href="/" className="text-lg font-bold tracking-tight text-white transition hover:text-blue-400">
-            <span className="text-blue-400">◆</span> Decidr
+          <Link href="/" className="flex items-center gap-2 transition hover:opacity-80">
+            <Image src="/logo/app-logo.png" alt="Decidr" width={28} height={28} />
+            <span className="text-lg font-bold tracking-tight text-white">Decidr</span>
           </Link>
           <StepNavigator currentStep={currentStep} completedSteps={completedSteps} onStepChange={store.setCurrentStep} />
         </div>
