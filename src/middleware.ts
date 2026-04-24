@@ -16,6 +16,8 @@ function getIP(req: NextRequest): string {
 }
 
 export function middleware(req: NextRequest) {
+  if (process.env.NODE_ENV === "development") return NextResponse.next();
+
   const path = req.nextUrl.pathname;
   const limit = LIMITS[path];
   if (!limit) return NextResponse.next();
