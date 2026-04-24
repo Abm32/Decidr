@@ -14,6 +14,7 @@ import { ScenarioCard } from '@/components/ScenarioCard';
 import { AudioPlayer } from '@/components/AudioPlayer';
 import { ConversationInterface } from '@/components/ConversationInterface';
 import { ComparisonView } from '@/components/ComparisonView';
+import { ShareCard } from '@/components/ShareCard';
 
 const apiClient = createApiClient();
 
@@ -177,7 +178,12 @@ export default function AppPage() {
       </div>
     ),
     'comparison': (
-      <ComparisonView scenarios={scenarioSet ?? []} comparisonData={comparisonData} isLoading={apiComparison.status === 'loading'} error={errFrom(apiComparison)} onRetry={retryComparison} />
+      <div className="space-y-6">
+        <ComparisonView scenarios={scenarioSet ?? []} comparisonData={comparisonData} isLoading={apiComparison.status === 'loading'} error={errFrom(apiComparison)} onRetry={retryComparison} />
+        {comparisonData && scenarioSet && (
+          <ShareCard prompt={store.decisionPrompt} scenarios={scenarioSet} selectedScenarioId={selectedScenarioId} />
+        )}
+      </div>
     ),
   };
 
