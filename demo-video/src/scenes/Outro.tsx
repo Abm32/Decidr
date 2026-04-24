@@ -1,47 +1,77 @@
 import React from 'react';
 import { AbsoluteFill, useCurrentFrame, interpolate, staticFile } from 'remotion';
 import { COLORS } from '../config';
-import { TextReveal } from '../components';
 
 export const Outro: React.FC = () => {
   const frame = useCurrentFrame();
 
-  const fadeToBlack = interpolate(frame, [0, 60], [0.3, 0], { extrapolateRight: 'clamp' });
-  const taglineOpacity = interpolate(frame, [60, 120], [0, 1], { extrapolateLeft: 'clamp', extrapolateRight: 'clamp' });
-  const taglineFade = interpolate(frame, [120, 150], [1, 0.6], { extrapolateLeft: 'clamp', extrapolateRight: 'clamp' });
-  const logoOpacity = interpolate(frame, [150, 180], [0, 1], { extrapolateLeft: 'clamp', extrapolateRight: 'clamp' });
-  const logoScale = interpolate(frame, [150, 180], [0.8, 1], { extrapolateLeft: 'clamp', extrapolateRight: 'clamp' });
-  const glowIntensity = frame >= 150
-    ? interpolate(frame, [150, 180], [0, 30], { extrapolateLeft: 'clamp', extrapolateRight: 'clamp' })
-    : 0;
-  const pulse = frame >= 180
-    ? interpolate(Math.sin((frame - 180) * 0.15), [-1, 1], [0.95, 1.05])
-    : 1;
+  // Tagline: fade in 0-40, hold, fade out 70-90
+  const taglineOpacity = interpolate(frame, [0, 40, 70, 90], [0, 1, 1, 0], { extrapolateRight: 'clamp' });
+  const taglineY = interpolate(frame, [0, 40], [20, 0], { extrapolateRight: 'clamp' });
+
+  // Logo: fade in 80-110, stays
+  const logoOpacity = interpolate(frame, [80, 110], [0, 1], { extrapolateLeft: 'clamp', extrapolateRight: 'clamp' });
+  const logoScale = interpolate(frame, [80, 110], [0.6, 1], { extrapolateLeft: 'clamp', extrapolateRight: 'clamp' });
+  const logoY = interpolate(frame, [80, 110], [30, 0], { extrapolateLeft: 'clamp', extrapolateRight: 'clamp' });
+
+  // Text "DECIDR": fade in 110-130, slides up
+  const textOpacity = interpolate(frame, [110, 130], [0, 1], { extrapolateLeft: 'clamp', extrapolateRight: 'clamp' });
+  const textY = interpolate(frame, [110, 130], [15, 0], { extrapolateLeft: 'clamp', extrapolateRight: 'clamp' });
+
+  // Glow pulse after everything is in
+  const glow = frame >= 130
+    ? interpolate(Math.sin((frame - 130) * 0.12), [-1, 1], [15, 40])
+    : interpolate(frame, [110, 130], [0, 15], { extrapolateLeft: 'clamp', extrapolateRight: 'clamp' });
 
   return (
     <AbsoluteFill style={{ background: COLORS.bg, justifyContent: 'center', alignItems: 'center' }}>
-      <AbsoluteFill style={{ background: COLORS.bg, opacity: 1 - fadeToBlack }} />
-
+      {/* Tagline */}
       <div style={{
-        display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 50,
-        opacity: frame >= 60 ? 1 : 0,
+        position: 'absolute',
+        opacity: taglineOpacity,
+        transform: `translateY(${taglineY}px)`,
+        fontSize: 46,
+        fontWeight: 600,
+        color: COLORS.textMuted,
+        fontFamily: 'sans-serif',
+        textAlign: 'center',
+        letterSpacing: 1,
       }}>
-        <div style={{ opacity: taglineOpacity * taglineFade }}>
-          <TextReveal text="You don't choose blindly anymore." startFrame={60} fontSize={48} />
-        </div>
+        You don't choose blindly anymore.
+      </div>
 
+      {/* Logo + Text group */}
+      <div style={{
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        gap: 24,
+        opacity: frame >= 80 ? 1 : 0,
+      }}>
         <img
-          src={staticFile('logo/Decidr.png')}
+          src={staticFile('logo/app-logo.png')}
           alt="Decidr"
           style={{
-            width: 300,
-            height: 300,
+            width: 200,
+            height: 200,
             objectFit: 'contain',
             opacity: logoOpacity,
-            transform: `scale(${logoScale * pulse})`,
-            filter: `drop-shadow(0 0 ${glowIntensity}px ${COLORS.primary}) drop-shadow(0 0 ${glowIntensity * 2}px ${COLORS.glow})`,
+            transform: `translateY(${logoY}px) scale(${logoScale})`,
+            filter: `drop-shadow(0 0 ${glow}px ${COLORS.primary}) drop-shadow(0 0 ${glow * 1.5}px ${COLORS.glow})`,
           }}
         />
+        <div style={{
+          opacity: textOpacity,
+          transform: `translateY(${textY}px)`,
+          fontSize: 64,
+          fontWeight: 800,
+          color: COLORS.text,
+          fontFamily: 'sans-serif',
+          letterSpacing: 12,
+          textShadow: `0 0 ${glow}px ${COLORS.primary}, 0 0 ${glow * 2}px ${COLORS.glow}`,
+        }}>
+          DECIDR
+        </div>
       </div>
     </AbsoluteFill>
   );
