@@ -140,9 +140,9 @@ export default function AppPage() {
       />
     ),
     'scenario-view': (
-      <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+      <div className="grid gap-5 lg:grid-cols-3">
         {scenarioSet?.map((s, i) => (
-          <ScenarioCard key={s.scenario_id} scenario={s} isSelected={s.scenario_id === selectedScenarioId} onSelect={() => handleSelectScenario(s.scenario_id)} animationDelay={i * 0.1} />
+          <ScenarioCard key={s.scenario_id} scenario={s} isSelected={s.scenario_id === selectedScenarioId} onSelect={() => handleSelectScenario(s.scenario_id)} animationDelay={i * 0.12} />
         ))}
       </div>
     ),
