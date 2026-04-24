@@ -26,6 +26,14 @@ const STEP_TITLES: Record<Step, string> = {
   'comparison': 'Compare all futures',
 };
 
+const STEP_SUBTITLES: Record<Step, string> = {
+  'decision-input': 'Be specific — the more context you give, the richer your scenarios.',
+  'scenario-view': 'Click any card to dive into that timeline. Expand to see the full journey.',
+  'audio-experience': 'An AI-narrated walkthrough of your chosen scenario.',
+  'conversation': 'Ask questions, get perspective from the future version of you.',
+  'comparison': 'Side-by-side analysis across every dimension that matters.',
+};
+
 function errFrom(s: ApiRequestState) {
   return s.status === 'error' ? s.error : null;
 }
@@ -132,27 +140,41 @@ export default function AppPage() {
   const retryComparison = useCallback(() => { store.setApiState('getComparison', { status: 'idle' }); }, [store]);
   const retryConversation = useCallback(() => { store.setApiState('startConversation', { status: 'idle' }); }, [store]);
 
+  const selectedScenario = scenarioSet?.find((s) => s.scenario_id === selectedScenarioId);
+
   const stepContent: Record<Step, React.ReactNode> = {
     'decision-input': (
-      <InputPanel
-        onSubmit={handleSubmit}
-        isLoading={apiScenarios.status === 'loading'}
-        error={errFrom(apiScenarios)}
-        onRetry={() => store.setApiState('generateScenarios', { status: 'idle' })}
-      />
+      <div className="mx-auto max-w-2xl">
+        <InputPanel
+          onSubmit={handleSubmit}
+          isLoading={apiScenarios.status === 'loading'}
+          error={errFrom(apiScenarios)}
+          onRetry={() => store.setApiState('generateScenarios', { status: 'idle' })}
+        />
+      </div>
     ),
     'scenario-view': (
-      <div className="grid gap-5 lg:grid-cols-3">
+      <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
         {scenarioSet?.map((s, i) => (
           <ScenarioCard key={s.scenario_id} scenario={s} isSelected={s.scenario_id === selectedScenarioId} onSelect={() => handleSelectScenario(s.scenario_id)} animationDelay={i * 0.12} />
         ))}
       </div>
     ),
     'audio-experience': (
-      <AudioPlayer audioUrl={audioState.audioUrl} isLoading={apiAudio.status === 'loading'} error={errFrom(apiAudio)} onRetry={retryAudio} onComplete={handleAudioComplete} />
+      <div className="mx-auto max-w-2xl">
+        {selectedScenario && (
+          <div className="mb-4 rounded-xl bg-gray-900/40 border border-gray-800/50 px-4 py-3">
+            <p className="text-xs text-gray-500">Now playing</p>
+            <p className="text-sm font-medium text-white mt-0.5">{selectedScenario.title}</p>
+          </div>
+        )}
+        <AudioPlayer audioUrl={audioState.audioUrl} isLoading={apiAudio.status === 'loading'} error={errFrom(apiAudio)} onRetry={retryAudio} onComplete={handleAudioComplete} />
+      </div>
     ),
     'conversation': (
-      <ConversationInterface messages={conversationSession.messages} isActive={conversationSession.isActive} isConnecting={apiStartConvo.status === 'loading'} error={errFrom(apiStartConvo) ?? errFrom(apiConversation)} onSendMessage={handleSendMessage} onRetry={retryConversation} />
+      <div className="mx-auto max-w-2xl">
+        <ConversationInterface messages={conversationSession.messages} isActive={conversationSession.isActive} isConnecting={apiStartConvo.status === 'loading'} error={errFrom(apiStartConvo) ?? errFrom(apiConversation)} onSendMessage={handleSendMessage} onRetry={retryConversation} onDone={() => { store.completeStep('conversation'); advance(); }} />
+      </div>
     ),
     'comparison': (
       <ComparisonView scenarios={scenarioSet ?? []} comparisonData={comparisonData} isLoading={apiComparison.status === 'loading'} error={errFrom(apiComparison)} onRetry={retryComparison} />
@@ -162,8 +184,8 @@ export default function AppPage() {
   return (
     <div className="min-h-screen">
       {/* Header */}
-      <header className="border-b border-gray-800/60 bg-gray-950/80 backdrop-blur-md">
-        <div className="mx-auto flex max-w-5xl items-center justify-between px-6 py-4">
+      <header className="sticky top-0 z-20 border-b border-gray-800/60 bg-gray-950/80 backdrop-blur-md">
+        <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-3">
           <Link href="/" className="text-lg font-bold tracking-tight text-white transition hover:text-blue-400">
             <span className="text-blue-400">◆</span> Decidr
           </Link>
@@ -172,15 +194,18 @@ export default function AppPage() {
       </header>
 
       {/* Main */}
-      <main className="mx-auto max-w-5xl px-6 py-10">
-        <motion.h2
-          key={currentStep}
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          className="mb-8 text-2xl font-bold tracking-tight text-white"
-        >
-          {STEP_TITLES[currentStep]}
-        </motion.h2>
+      <main className="mx-auto max-w-6xl px-6 py-10">
+        <div className="mb-8">
+          <motion.h2
+            key={currentStep}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            className="text-2xl font-bold tracking-tight text-white"
+          >
+            {STEP_TITLES[currentStep]}
+          </motion.h2>
+          <p className="mt-1 text-sm text-gray-500">{STEP_SUBTITLES[currentStep]}</p>
+        </div>
 
         <ErrorBoundary fallback={<p className="p-4 text-red-400">Something went wrong. Please refresh.</p>}>
           <AnimatePresence mode="wait">

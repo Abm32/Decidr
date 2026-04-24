@@ -12,9 +12,10 @@ interface Props {
   error: AppError | null;
   onSendMessage: (content: string) => void;
   onRetry: () => void;
+  onDone?: () => void;
 }
 
-export function ConversationInterface({ messages, isConnecting, error, onSendMessage, onRetry }: Props) {
+export function ConversationInterface({ messages, isConnecting, error, onSendMessage, onRetry, onDone }: Props) {
   const [input, setInput] = useState('');
   const endRef = useRef<HTMLDivElement>(null);
 
@@ -74,6 +75,13 @@ export function ConversationInterface({ messages, isConnecting, error, onSendMes
           Send
         </button>
       </div>
+      {onDone && messages.length > 1 && (
+        <div className="flex justify-end border-t border-gray-800/60 px-4 py-3">
+          <button onClick={onDone} className="rounded-full border border-gray-700 px-5 py-2 text-xs font-medium text-gray-400 transition hover:border-gray-500 hover:text-white">
+            Done chatting → Compare all futures
+          </button>
+        </div>
+      )}
     </div>
   );
 }
