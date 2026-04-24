@@ -16,7 +16,7 @@ async function askLLM(systemPrompt: string, history: { role: string; content: st
   const res = await fetch("https://api.openai.com/v1/chat/completions", {
     method: "POST",
     headers: { "Content-Type": "application/json", Authorization: `Bearer ${apiKey}` },
-    body: JSON.stringify({ model: "gpt-5.4-mini", messages, temperature: 0.8, max_tokens: 300 }),
+    body: JSON.stringify({ model: "gpt-5.4-mini", messages, temperature: 0.8, max_completion_tokens: 300 }),
   });
 
   if (!res.ok) return "I'm having trouble thinking right now. Please try again.";
