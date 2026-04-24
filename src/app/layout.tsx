@@ -26,6 +26,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="en">
       <body className="min-h-screen bg-gray-950 text-gray-100 antialiased">
         {children}
+        <div className="border-t border-gray-800/40 px-4 py-3 text-center text-[11px] leading-relaxed text-gray-600">
+          Decidr is an AI-powered exploration tool, not professional advice. All decisions and outcomes are yours alone. We provide scenarios for reflection, not recommendations.
+        </div>
         <VisitorBadge />
       </body>
     </html>

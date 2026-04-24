@@ -42,6 +42,7 @@ export function InputPanel({ onSubmit, isLoading, error, onRetry }: Props) {
       </div>
       {isLoading && <LoadingIndicator message="Generating scenarios with GPT-5.4..." />}
       {error && <ErrorDisplay error={error} onRetry={onRetry} />}
+      <p className="text-[10px] text-gray-600">Scenarios are AI-generated for exploration only, not professional advice.</p>
     </div>
   );
 }
